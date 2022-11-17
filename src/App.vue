@@ -24,7 +24,7 @@
       <el-table :data="tableData" :key="num" id="mainTable" @row-click="handleTableRow" height="594" style="width: 100%">
         <el-table-column prop="seedWords" label="SeedWords" width="390" />
         <el-table-column prop="compWords" label="CompWords" width="210" />
-        <el-table-column prop="comp" label="Comp" width="420"/>
+        <el-table-column prop="comp" label="Comp" />
       </el-table>
     </el-col>
     <el-col :span="1" class="nothing">
@@ -389,6 +389,8 @@ p{
 .selectedDelete{
   float: right;
   margin-right: 10px;
+  margin-top: 0;
+  padding-bottom: 4px;
 }
 
 </style>
