@@ -158,7 +158,7 @@ export default {
     },
     handleDelete(row_id) {
       console.log(row_id)
-      this.word_list.splice(row_id, row_id+1)
+      this.word_list.splice(row_id, 1)
     },
     scoreRate(row_id) {
       console.log(row_id)
@@ -191,7 +191,7 @@ export default {
 
     },
     include(){
-      let word = this.inputRight
+      let word = this.inputRight.trim()
       this.includeFlag = 1
       this.excludeFlag = 0
       // console.log(toRaw(this.tableData).length)
@@ -199,18 +199,26 @@ export default {
       for(let i=0;i<toRaw(this.tableData).length;i++){
         this.tempTableData.push(toRaw(this.tableData)[i])
       }
-      for(let i=0;i<toRaw(this.tableData).length;i++){
-        console.log(toRaw(this.tableData[i]))
+      var changeIndex = 0;
+      var flag = 0;
+      var length = toRaw(this.tableData).length
+      console.log(changeIndex, flag)
+      for(let i=0;i<length;i++){
+        // console.log(toRaw(this.tableData[i]))
         // console.log(toRaw(this.tableData[i]).value)
-        if(toRaw(this.tableData[i]).compWords != word) {
-          toRaw(this.tableData).splice(i,i+1)
+        //changeIndex = i
+        //console.log(toRaw(this.tableData[changeIndex]).compWords)
+        changeIndex = i - flag
+        if(!(toRaw(this.tableData[changeIndex]).compWords.trim() === word)) {
+          toRaw(this.tableData).splice(changeIndex,1)
+          flag++
         }
-        // console.log(this.tableData)
+        //console.log(this.tableData)
       }
       this.num++;
     },
     exclude(){
-      let word = this.inputRight
+      let word = this.inputRight.trim()
       this.excludeFlag = 1
       this.includeFlag = 0
       this.tempTableData = []
@@ -221,8 +229,8 @@ export default {
       for(let i=0;i<toRaw(this.tableData).length;i++){
         // console.log(toRaw(this.tableData[i]))
         // console.log(toRaw(this.tableData[i]).value)
-        if(toRaw(this.tableData[i]).compWords == word) {
-          toRaw(this.tableData).splice(i,i+1)
+        if(toRaw(this.tableData[i]).compWords.trim() === word) {
+          toRaw(this.tableData).splice(i,1)
         }
         // console.log(this.tableData)
       }
