@@ -391,7 +391,9 @@ p{
 .excludeFont{
   color: #ec8497;
   text-align: left;
-  padding-left: 10px;
+  padding-left: 2px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .selectedDelete{
